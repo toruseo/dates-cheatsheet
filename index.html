@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>年号日付チートシート</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+<center>
+
+		<table id="years"></table>
+		<script>
+		
+			let url = location.search;
+			const params = new URLSearchParams(url);
+			let year = params.get("year");
+			let from = params.get("from");
+			let to = params.get("to");
+			let birth = params.get("birth");
+		
+			let date = new Date(); 
+			let currentyear = date.getFullYear();
+			let startyear = currentyear-10, endyear = currentyear+10;
+		
+			if(year != null) currentyear = year;
+			if(from != null) startyear = from;
+			if(to != null) endyear = to;
+		
+			let head, end;
+			let wareki;
+			let element = document.getElementById("years");
+			
+			for(let year=startyear; year<=endyear; year++){
+				if(year == currentyear){
+					head = ">>>";
+					end = "<<<";
+				}else{
+					head = "";
+					end = "";
+				}
+				
+				if(year <= 1988){
+					wareki = `S-${year-1925}`;
+				}else if(year <= 1988+5){
+					wareki = `H-${year-1988}/S-${year-1925}`;
+				}else if(year <= 2018){
+					wareki = `H-${year-1988}`;
+				}else if(year <= 2018+5){
+					wareki = `R-${year-2018}/H-${year-1988}`;
+				}else{
+					wareki = `R-${year-2018}`;
+				}
+				
+				let agestr = "";
+				if(birth != null) agestr = `<td>&ensp;${year-birth-1}/${year-birth}歳</td>`;
+				element.insertAdjacentHTML("beforeEnd", `<tr><td>${head}</td><td>${year}&ensp;</td><td>${wareki}</td>${agestr}<td>${end}</td></tr>`);
+			}
+			
+		</script>
+		<br>
+
+	<table>
+		<tr>
+			<td> 1月 </td>		<td> January </td> 	<td>  Jan. </td>
+		</tr>
+		<tr>
+			<td> 2月 </td>		<td> February </td> 	<td> Feb. </td>
+		</tr>
+		<tr>
+			<td> 3月 </td>		<td> March </td> 	<td> Mar. </td>
+		</tr>
+		<tr>
+			<td> 4月 </td>		<td> April </td> 	<td> Apr. </td>
+		</tr>
+		<tr>
+			<td> 5月 </td>		<td> May </td> 	<td> May </td>
+		</tr>
+		<tr>
+			<td> 6月 </td>		<td> June </td> 	<td>  Jun. </td>
+		</tr>
+		<tr>
+			<td> 7月 </td>		<td> July </td> 	<td>  Jul. </td>
+		</tr>
+		<tr>
+			<td> 8月 </td>		<td> August </td> 	<td> Aug. </td>
+		</tr>
+		<tr>
+			<td> 9月 </td>		<td> September </td> 	<td> Sep./Sept. </td>
+		</tr>
+		<tr>
+			<td> 10月 </td>		<td> October </td> 	<td>  Oct. </td>
+		</tr>
+		<tr>
+			<td> 11月 </td>		<td> November </td> 	<td> Nov. </td>
+		</tr>
+		<tr>
+			<td> 12月 </td>		<td> December </td> 	<td> Dec. </td>
+		</tr>
+		<tr><td></td></tr>
+		<tr>
+			<td> 日曜日 </td>		<td> Sunday </td>	<td> Sun. </td>
+		</tr>
+		<tr>
+			<td> 月曜日 </td>		<td> Monday </td> 	<td> Mon. </td>
+		</tr>
+		<tr>
+			<td> 火曜日 </td>		<td> Tuesday </td> 	<td> Tue./Tues. </td>
+		</tr>
+		<tr>
+			<td> 水曜日 </td>		<td> Wednesday </td> 	<td> Wed. </td>
+		</tr>
+		<tr>
+			<td> 木曜日 </td>		<td> Thursday </td> 	<td> Thu./Thurs. </td>
+		</tr>
+		<tr>
+			<td> 金曜日 </td>		<td> Friday </td> 	<td> Fri. </td>
+		</tr>
+		<tr>
+			<td> 土曜日 </td>		<td> Saturday </td> 	<td> Sat. </td>
+		</tr>
+	</table>
+	<br>
+
+	<table>
+		<tr>
+			<td> on {January 6, Saturday, a rainy day} </td>
+		</tr>
+		<tr>
+			<td> at {nine, the same time, the moment} </td>
+		</tr>
+		<tr>
+			<td> in {September, 2012, Spring, the 20th Century} </td>
+		</tr>
+	</table>
+	<br>
+
+
+</center>
+</body>
+</html>
