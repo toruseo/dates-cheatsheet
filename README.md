@@ -4,6 +4,7 @@
 ローカルで使っていたしょうもないスクリプトですが，クラウド化した方が都合が良くなったのでついでに公開します．
 
 使い方：
-https://toruseo.github.io/dates-cheetsheet/?birth=1970
-https://toruseo.github.io/dates-cheetsheet/?birth=1970&from=2015&to=2030
+- https://toruseo.github.io/dates-cheatsheet/?birth=1970
+- https://toruseo.github.io/dates-cheatsheet/?birth=1970&from=2015&to=2030
+
 をブックマークしておく等．
